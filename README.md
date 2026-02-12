@@ -128,7 +128,7 @@ else:
 
 ## Funções Auxiliares Detalhadas
 
-*   `detect_black_region_boundaries(gray_array)`: Recebe uma imagem em escala de cinza e retorna uma máscara binária destacando pixels *muito escuros* (black_threshold = 80). É fundamental para focar apenas no região interna preta do ArUco e ignorar bordas cinzas na fase de detecção de orientação.
+*   `detect_black_region_boundaries(gray_array)`: Recebe uma imagem em escala de cinza e retorna uma máscara binária destacando pixels *muito escuros* (black_threshold = 80). É fundamental para focar apenas na região do ArUco.
 *   `sobel_edge_detection(gray_array)`: Aplica o filtro de Sobel para calcular a magnitude e direção das bordas em uma imagem em escala de cinza.
 *   `hough_transform_lines(edge_image, threshold)`: Detecta linhas retas em uma imagem de borda usando a Transformada de Hough, retornando as linhas mais proeminentes.
 *   `filter_main_lines(lines, image_shape)`: Filtra as linhas detectadas, buscando as duas horizontais e duas verticais mais votadas que formam o contorno do ArUco.
