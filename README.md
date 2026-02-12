@@ -1,5 +1,5 @@
 # Processamento de Imagens ArUco: Detecção, Rotação e Remoção de Texto
-   Aluna: Ellen Caroline Soares dos Santos
+   **Aluna: Ellen Caroline Soares dos Santos**
 
 Este projeto Python implementa um pipeline completo para processar imagens contendo marcadores ArUco.
 
@@ -35,7 +35,7 @@ Esta primeira parte do pipeline se concentra em preparar a imagem, identificar a
 
 4.  **Remoção de Texto e Limpeza de Bordas (`remove_text_preserve_aruco`):**
     *   Esta função opera na imagem *já rotacionada*. Internamente, ela utiliza `detect_aruco_region` para identificar a área geral do ArUco.
-    *   Em seguida, cria uma nova imagem branca e **copia para ela apenas a região do ArUco**, efetivamente removendo todo o texto, **quaisquer bordas cinzas** e outros elementos externos indesejados que não fazem parte do ArUco principal.
+    *   Em seguida, cria uma nova imagem branca e **copia para ela apenas a região do ArUco**, efetivamente removendo todo o texto, eventuais bordas cinzas e outros elementos externos indesejados que não fazem parte do ArUco principal.
 
 ### Parte 2: Detecção Precisa do ArUco 6x6 sem Bordas (Função `detect_aruco_black_only`)
 
@@ -128,7 +128,7 @@ else:
 
 ## Funções Auxiliares Detalhadas
 
-*   `detect_black_region_boundaries(gray_array)`: Recebe uma imagem em escala de cinza e retorna uma máscara binária destacando pixels *muito escuros* (black_threshold = 80). É fundamental para focar apenas no miolo preto do ArUco e ignorar bordas cinzas na fase de detecção de orientação.
+*   `detect_black_region_boundaries(gray_array)`: Recebe uma imagem em escala de cinza e retorna uma máscara binária destacando pixels *muito escuros* (black_threshold = 80). É fundamental para focar apenas no região interna preta do ArUco e ignorar bordas cinzas na fase de detecção de orientação.
 *   `sobel_edge_detection(gray_array)`: Aplica o filtro de Sobel para calcular a magnitude e direção das bordas em uma imagem em escala de cinza.
 *   `hough_transform_lines(edge_image, threshold)`: Detecta linhas retas em uma imagem de borda usando a Transformada de Hough, retornando as linhas mais proeminentes.
 *   `filter_main_lines(lines, image_shape)`: Filtra as linhas detectadas, buscando as duas horizontais e duas verticais mais votadas que formam o contorno do ArUco.
