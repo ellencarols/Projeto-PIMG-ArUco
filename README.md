@@ -7,7 +7,7 @@ Este projeto é capaz de:
 1.  **Analisar a imagem inicial** para identificar regiões que podem ser o ArUco e possíveis áreas de texto circundante.
 2.  **Identificar e Rotacionar** o marcador ArUco para uma orientação padrão, onde o texto associado fica sempre abaixo dele.
 3.  **Remover** todo o texto ao redor do ArUco rotacionado.
-4.  **Realizar uma Detecção Precisa** do ArUco, focando exclusivamente na figura 6x6 sem as bordas cinzas que poderiam estar presentes na imagem original.
+4.  **Realizar uma Detecção Precisa** do ArUco, focando exclusivamente na figura 8x8 sem as bordas cinzas que poderiam estar presentes na imagem original.
 
 ## Funcionalidades Principais e Fluxo de Execução
 
@@ -37,9 +37,9 @@ Esta primeira parte do pipeline se concentra em preparar a imagem, identificar a
     *   Esta função opera na imagem *já rotacionada*. Internamente, ela utiliza `detect_aruco_region` para identificar a área geral do ArUco.
     *   Em seguida, cria uma nova imagem branca e **copia para ela apenas a região do ArUco**, efetivamente removendo todo o texto, eventuais bordas cinzas e outros elementos externos indesejados que não fazem parte do ArUco principal.
 
-### Parte 2: Detecção Precisa do ArUco 6x6 sem Bordas (Função `detect_aruco_black_only`)
+### Parte 2: Detecção Precisa do ArUco 8x8 sem Bordas (Função `detect_aruco_black_only`)
 
-Após a imagem ter sido processada pela `process_aruco_complete` (resultando em `final_img`), a função `detect_aruco_black_only` pode ser aplicada para uma detecção mais refinada dos cantos do ArUco 6x6 puro, já sem o texto e sem as bordas cinzas, focando apenas no padrão interno.
+Após a imagem ter sido processada pela `process_aruco_complete` (resultando em `final_img`), a função `detect_aruco_black_only` pode ser aplicada para uma detecção mais refinada dos cantos do ArUco 8x8 puro, já sem o texto e sem as bordas cinzas, focando apenas no padrão interno.
 
 ## Como Usar
 
@@ -83,9 +83,9 @@ if rotated_img is not None and final_img is not None:
     plt.show()
 ```
 
-### Exemplo de Detecção Precisa do ArUco 6x6 (após o pipeline principal)
+### Exemplo de Detecção Precisa do ArUco 8x8 (após o pipeline principal)
 
-Após obter a `final_img` limpa da `process_aruco_complete`, podemos usar `detect_aruco_black_only` para identificar os cantos precisos da figura 6x6:
+Após obter a `final_img` limpa da `process_aruco_complete`, podemos usar `detect_aruco_black_only` para identificar os cantos precisos da figura 8x8:
 
 ```python
 # Usando a 'final_img' obtida do pipeline principal
@@ -100,30 +100,30 @@ if corners is not None:
 
     plt.subplot(1, 4, 1)
     plt.imshow(edges, cmap="gray")
-    plt.title("Bordas do ArUco 6x6")
+    plt.title("Bordas do ArUco 8x8")
     plt.axis("off")
 
     plt.subplot(1, 4, 2)
     plt.imshow(black_mask, cmap="gray")
-    plt.title("Máscara do ArUco 6x6")
+    plt.title("Máscara do ArUco 8x8")
     plt.axis("off")
 
     plt.subplot(1, 4, 3)
     plt.imshow(black_mask, cmap="gray")
     plt.scatter(corners[:, 0], corners[:, 1], c="red", s=40)
-    plt.title("Cantos do ArUco 6x6")
+    plt.title("Cantos do ArUco 8x8")
     plt.axis("off")
 
     resultado_final_visual = draw_detection_result(final_img, corners)
     plt.figure(figsize=(6, 6))
     plt.imshow(resultado_final_visual)
-    plt.title("ArUco 6x6 Detectado – Cantos e Retas")
+    plt.title("ArUco 8x8 Detectado – Cantos e Retas")
     plt.axis("off")
     plt.show()
     plt.tight_layout()
     plt.show()
 else:
-    print("Nenhum ArUco 6x6 foi detectado na imagem final.")
+    print("Nenhum ArUco 8x8 foi detectado na imagem final.")
 ```
 
 ## Funções Auxiliares Detalhadas
@@ -141,7 +141,7 @@ else:
 *   `remove_text_preserve_aruco(img_array)`: Recebe uma imagem (já rotacionada) e retorna uma nova imagem onde apenas a região do ArUco (detectada por `detect_aruco_region`) é mantida, e o restante é preenchido com branco, garantindo a remoção de texto, bordas cinzas e outros elementos.
 *   `binarize_image(gray_array, threshold)`: Converte uma imagem em escala de cinza em uma imagem binária (preto e branco) com base em um limiar.
 *   `draw_detection_result(img_array, corners)`: Para fins de visualização, desenha as linhas e os cantos detectados do ArUco sobre uma cópia da imagem original.
-*   `detect_aruco_black_only(img_array, debug)`: Um pipeline de detecção de ArUco que se concentra apenas na região preta do marcador, retornando os cantos detectados e as imagens intermediárias de borda e máscara. Ideal para ser usado em imagens *já limpas* para encontrar o ArUco 6x6 sem ruídos.
+*   `detect_aruco_black_only(img_array, debug)`: Um pipeline de detecção de ArUco que se concentra apenas na região preta do marcador, retornando os cantos detectados e as imagens intermediárias de borda e máscara. Ideal para ser usado em imagens *já limpas* para encontrar o ArUco 8x8 sem ruídos.
 
 ## Requisitos
 
