@@ -1,7 +1,7 @@
 # Processamento de Imagens ArUco: Detecção, Rotação e Remoção de Texto
    **Aluna: Ellen Caroline Soares dos Santos**
    
-   **Link Youtube:https://youtu.be/9oN7H5wcumU**
+   **Link Youtube:https://youtu.be/9oN7H5wcumU](https://youtu.be/6fnWIqbBP-s**
 
 Este projeto Python implementa um pipeline completo para processar imagens contendo marcadores ArUco.
 
