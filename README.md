@@ -59,7 +59,7 @@ O pipeline completo é encapsulado na função `process_aruco_complete`.
 ### Exemplo de Uso do Pipeline Principal
 
 ```python
-input_image = "Imagem4.jpg"
+input_image = "../data/imagem10.jpg"
 
 # Processar a imagem
 rotated_img, final_img = process_aruco_complete(
