@@ -2,6 +2,7 @@
    **Aluna: Ellen Caroline Soares dos Santos**
    
    **Link Youtube:https://youtu.be/6fnWIqbBP-s**
+   **Link Dataset: https://universe.roboflow.com/coe-005-causapin/ai-robs"
 
 Este projeto Python implementa um pipeline completo para processar imagens contendo marcadores ArUco.
 
