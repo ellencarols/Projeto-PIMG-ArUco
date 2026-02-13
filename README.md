@@ -53,7 +53,7 @@ O pipeline completo é encapsulado na função `process_aruco_complete`.
 
 `process_aruco_complete(input_path, debug=True)`
 
-*   `input_path`: Caminho para a imagem de entrada (por exemplo, `"Imagem4.jpg"`).
+*   `input_path`: Caminho para a imagem de entrada (por exemplo, `"../data/imagem10.jpg"`).
 *   `debug`: (Padrão: `True`) Se `True`, imprime mensagens de depuração durante o processo.
 
 ### Exemplo de Uso do Pipeline Principal
